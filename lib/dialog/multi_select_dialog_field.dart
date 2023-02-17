@@ -22,6 +22,8 @@ class MultiSelectDialogField<V> extends FormField<List<V>> {
 
   final BorderRadius? buttonInkwellBorderRadius;
 
+  final EdgeInsets? buttonPadding;
+
   /// The text at the top of the dialog.
   final Widget? title;
 
@@ -115,6 +117,7 @@ class MultiSelectDialogField<V> extends FormField<List<V>> {
     this.buttonText,
     this.buttonIcon,
     this.buttonInkwellBorderRadius,
+    this.buttonPadding = const EdgeInsets.all(10),
     this.listType,
     this.decoration,
     this.onSelectionChanged,
@@ -157,6 +160,7 @@ class MultiSelectDialogField<V> extends FormField<List<V>> {
                 items: items,
                 buttonText: buttonText,
                 buttonIcon: buttonIcon,
+                buttonPadding: buttonPadding,
                 buttonInkwellBorderRadius: buttonInkwellBorderRadius,
                 chipDisplay: chipDisplay,
                 decoration: decoration,
@@ -196,6 +200,7 @@ class _MultiSelectDialogFieldView<V> extends StatefulWidget {
   final Text? buttonText;
   final Icon? buttonIcon;
   final BorderRadius? buttonInkwellBorderRadius;
+  final EdgeInsets? buttonPadding;
   final Widget? title;
   final List<MultiSelectItem<V>> items;
   final void Function(List<V>)? onSelectionChanged;
@@ -230,6 +235,7 @@ class _MultiSelectDialogFieldView<V> extends StatefulWidget {
     this.buttonText,
     this.buttonIcon,
     this.buttonInkwellBorderRadius,
+    this.buttonPadding,
     this.listType,
     this.decoration,
     this.onSelectionChanged,
@@ -265,6 +271,7 @@ class _MultiSelectDialogFieldView<V> extends StatefulWidget {
         title = field.title,
         buttonText = field.buttonText,
         buttonIcon = field.buttonIcon,
+        buttonPadding = field.buttonPadding,
         buttonInkwellBorderRadius = field.buttonInkwellBorderRadius,
         listType = field.listType,
         decoration = field.decoration,
@@ -457,7 +464,7 @@ class __MultiSelectDialogFieldViewState<V>
                       ),
                     )
                 : widget.decoration,
-            padding: const EdgeInsets.all(10),
+            padding: widget.buttonPadding,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
